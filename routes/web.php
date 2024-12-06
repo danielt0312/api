@@ -17,4 +17,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+use App\Http\Controllers\CameraController;
+use App\Http\Controllers\ImageController;
+
+Route::get('/capture', [CameraController::class, 'index']);
+Route::post('/upload-image', [ImageController::class, 'store']);
+Route::post('/identify-face', [ImageController::class, 'identify']);
+
 require __DIR__.'/auth.php';
